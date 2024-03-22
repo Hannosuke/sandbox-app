@@ -18,6 +18,7 @@ module SandboxApp
   class Application < Rails::Application
     config.load_defaults 7.0
 
+    config.active_record.schema_format = :sql
     config.generators.system_tests = nil
     config.time_zone = "Tokyo"
     config.i18n.default_locale = :ja
