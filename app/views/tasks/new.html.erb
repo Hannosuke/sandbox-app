@@ -1,4 +1,12 @@
 <h1>New Task</h1>
+<% if @task.errors.present? %>
+  <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <% p message %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div>
   <%= form_with model: @task do |f| %>
     <%= f.text_field :name %>
