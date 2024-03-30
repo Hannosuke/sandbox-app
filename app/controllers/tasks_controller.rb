@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[edit update]
+  before_action :set_task, only: %i[edit update destroy]
 
   def index
     @tasks = Task.all
@@ -30,6 +30,13 @@ class TasksController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @task.destroy
+
+    flash[:notice] = 'Task deleted successfully'
+    redirect_to tasks_path
   end
 
   private
