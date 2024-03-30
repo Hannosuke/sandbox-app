@@ -3,7 +3,10 @@
 <div>
   <ul>
     <% @tasks.each do |task| %>
-      <li><%= task.name %></li>
+      <li>
+        <%= task.name %>
+        <%= link_to "🗑️", task, method: :delete, data: { confirm: "『#{task.name}』のタスクを削除します。よろしいですか？"} %>
+      </li>
     <% end %>
   </ul>
 </div>
