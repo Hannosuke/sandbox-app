@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[edit update]
+  before_action :set_task, only: %i[edit update destroy]
 
   def index
     @tasks = Task.all
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task created successfully'
       redirect_to tasks_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,8 +28,15 @@ class TasksController < ApplicationController
       flash[:notice] = 'Task updated successfully'
       redirect_to tasks_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @task.destroy
+
+    flash[:notice] = 'Task deleted successfully'
+    redirect_to tasks_path
   end
 
   private
