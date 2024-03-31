@@ -4,7 +4,7 @@
   <ul>
     <% @tasks.each do |task| %>
       <li>
-        <%= task.name %>
+        <%= link_to task.name, task_path(task)  %>
         <%= link_to "🗑️", task, data: { turbo_method: :delete, turbo_confirm: "タスク『#{task.name}』を削除します。よろしいですか？"} %>
       </li>
     <% end %>
