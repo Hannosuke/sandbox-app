@@ -9,8 +9,10 @@ describe "insert_user_id_to_tasks", type: :task do
       create(:user)
 
       5.times do |i|
-        Task.create(name: "task#{i}", user_id: nil)
+        create(:task, name: "task#{i}")
       end
+
+      ActiveRecord::Base.connection.execute("UPDATE tasks SET user_id = NULL")
     end
 
     it "全てのタスクにユーザーが関連づけられる" do
