@@ -37,7 +37,7 @@ CREATE TABLE `tasks` (
   `description` varchar(255) DEFAULT NULL,
   `created_at` datetime(6) NOT NULL,
   `updated_at` datetime(6) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
+  `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_tasks_on_user_id` (`user_id`),
   CONSTRAINT `fk_rails_4d2a9e4d7e` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
@@ -70,6 +70,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20240322104847'),
 ('20240331125447'),
 ('20240510165459'),
-('20240613152237');
+('20240613152237'),
+('20240614072727');
 
 
